@@ -5,6 +5,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {StackMenu} from './StackMenu';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { StackAdvance } from './StackAdvance';
+import { StackPerfil } from './StackPerfil';
 
 const Tab = createBottomTabNavigator();
 
@@ -50,7 +51,7 @@ export const ButtontabMenu = () => {
       })}>
       <Tab.Screen name="Menu" options={{title: 'Menu'}} component={StackMenu} />
       <Tab.Screen name="Avance" component={StackAdvance} />
-      <Tab.Screen name="Perfil" component={ProfileScreen} />
+      <Tab.Screen name="Perfil" component={StackPerfil} />
     </Tab.Navigator>
   );
 };

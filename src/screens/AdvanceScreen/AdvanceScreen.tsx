@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import {Text, TouchableOpacity, View} from 'react-native';
 import {StackScreenProps} from '@react-navigation/stack';
 import CardAdviser from '../../components/CardAdviser/CardAdviser';
 import {CardInvestigation} from '../../components/CardInvestigation/CardInvestigation';
@@ -17,7 +17,14 @@ export const AdvanceScreen = ({navigation}: Props) => {
           <Text style={styles.titleAdvance}>Datos de mi asesor:</Text>
           <CardAdviser />
           <Text style={styles.titleAdvance}>Tu investigación:</Text>
-          <CardInvestigation />
+
+          <TouchableOpacity
+            style={{ flex: 1 , marginBottom: 70}}
+            onPress={() => navigation.navigate('ProjectScreen')}>
+           
+            <CardInvestigation />
+           
+          </TouchableOpacity>
           <Text style={styles.titleAdvance}>Progreso:</Text>
           <View
             style={{
@@ -26,18 +33,16 @@ export const AdvanceScreen = ({navigation}: Props) => {
               alignItems: 'center',
               justifyContent: 'center',
             }}>
-            <Progress.Bar progress={0.5} width={350} color="#175000" />
+            <Progress.Bar progress={0.5} width={320} color="#175000" />
           </View>
           <Text style={styles.titleAdvance}>Estado: Revisado</Text>
           <View style={{width: '100%', alignItems: 'center', marginTop: 15}}>
-            <PctButtom 
-                title="Descargar" 
-                onPress={() => console.log('Press')} />
+            <PctButtom title="Descargar" onPress={() => console.log('Press')} />
           </View>
           <View style={{width: '100%', alignItems: 'center', marginTop: 15}}>
             <PctButtom
-                title="Actualizar"
-                onPress={() => console.log('Press')}
+              title="Actualizar"
+              onPress={() => console.log('Press')}
             />
           </View>
         </View>

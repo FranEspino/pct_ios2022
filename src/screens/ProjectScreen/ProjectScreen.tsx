@@ -3,6 +3,7 @@ import {Dimensions, StyleSheet, Text, TouchableOpacity, View} from 'react-native
 import {StackScreenProps} from '@react-navigation/stack';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Pdf from 'react-native-pdf';
+import { CommentButton } from '../../components/CommentButton/CommentButton';
 
 interface Props extends StackScreenProps<any, any> {}
 const source = { uri: 'http://samples.leanpub.com/thereactnativebook-sample.pdf', cache: true };
@@ -13,7 +14,6 @@ const ProjectScreen = ({navigation}: Props) => {
         flex: 1,
         justifyContent: 'flex-start',
         alignItems: 'center',
-        marginTop: 25,
     },
     pdf: {
         flex:1,
@@ -42,18 +42,27 @@ const ProjectScreen = ({navigation}: Props) => {
     <Pdf
         source={source}
         onLoadComplete={(numberOfPages,filePath) => {
-            console.log(`Number of pages: ${numberOfPages}`);
+            //console.log(`Number of pages: ${numberOfPages}`);
         }}
         onPageChanged={(page,numberOfPages) => {
-            console.log(`Current page: ${page}`);
+            //console.log(`Current page: ${page}`);
         }}
         onError={(error) => {
-            console.log(error);
+           // console.log(error);
         }}
         onPressLink={(uri) => {
-            console.log(`Link pressed: ${uri}`);
+            //console.log(`Link pressed: ${uri}`);
         }}
         style={styles.pdf}/>
+              <CommentButton
+                iconName="chatbox-ellipses"
+                onPress={() => {console.log("Hello")}}
+                style={{
+                    position: 'absolute',
+                    bottom: 40,
+                    right: 10,
+                }}
+            />
 </View>
     
   );

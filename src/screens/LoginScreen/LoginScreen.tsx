@@ -2,11 +2,21 @@ import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
 import {  View, Image, TextInput } from 'react-native'
 import PctButtom from '../../components/PctButtom/PctButtom'
+import { useForm } from '../../hooks/useForm'
 import { styles } from './LoginScreenStyle'
 
 interface Props extends StackScreenProps<any,any>{};
 
 const LoginScreen = ({navigation}:Props) => {
+    const {dni, clave, onChange} = useForm({
+        dni: '',
+        clave: ''
+    });
+
+    const logData = () => {
+        console.log(dni, clave)
+    }
+
     return (
         <View style={styles.container}>
             <Image
@@ -16,22 +26,33 @@ const LoginScreen = ({navigation}:Props) => {
                 }}
             />
             <TextInput
-                keyboardType='numeric'
-                placeholder="Número de documento"
+             
                 style={styles.input}
                 placeholderTextColor="#000"
+                onChangeText={(value) => onChange(value, 'dni')}
+                value={dni}
+                placeholder="Ingresa tu dni"
+                onSubmitEditing={logData}
+                keyboardType="numeric"
+                autoCorrect={false}
+                autoCapitalize={"none"}
             />
             <TextInput
-                autoCapitalize="none"
-                secureTextEntry={true}
-                placeholder="Contraseña"
-                style={{ ...styles.input, marginTop: 20 }}
-                placeholderTextColor="#000"
+                 style={styles.input}
+                 placeholderTextColor="#000"
+                 onChangeText={(value) => onChange(value, 'clave')}
+                 value={clave}
+                 placeholder="Ingresa tu clave"
+                 onSubmitEditing={logData}
+                 secureTextEntry={true}
+                 autoCorrect={false}
+                 autoCapitalize={"none"}
             />
             <PctButtom 
                  title="Ingresar"
                  style={{ marginTop: 40, }}
                  onPress={()=> {navigation.navigate('ButtontabNavigator')}}/>
+                  
         </View>
 
     )
