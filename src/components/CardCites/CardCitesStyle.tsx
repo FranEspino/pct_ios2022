@@ -21,18 +21,18 @@ export const styles = StyleSheet.create({
     width: '70%'
   },
   containerInfoText:{
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: 'bold',
     color: '#000'
   },
   containerInfoDescription:{
-    fontSize: 12,
+    fontSize: 8,
     marginTop: 8,
     fontWeight: 'normal',
     color: '#000'
   },
   containerInfoLink:{
-    fontSize: 12,
+    fontSize: 10,
     marginTop: 8,
 
     fontWeight: 'bold',

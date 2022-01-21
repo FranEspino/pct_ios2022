@@ -14,10 +14,10 @@ export const CardCites = () => {
       </View>
       <View style={styles.containerDate}>
         <View>
-          <Text style={{...styles.containerInfoText, fontSize:14}}>Fecha:{'\n'}19/01/2022</Text>
+          <Text style={{...styles.containerInfoText, fontSize:10}}>Fecha:{'\n'}19/01/2022</Text>
         </View>
         <View>
-          <Text style={{...styles.containerInfoText, fontSize:14}}>Hora::{'\n'}10:50 am</Text>
+          <Text style={{...styles.containerInfoText, fontSize:10}}>Hora::{'\n'}10:50 am</Text>
         </View>
       </View>
     </View>

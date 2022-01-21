@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {StackScreenProps} from '@react-navigation/stack';
 import {
   Image,
@@ -11,16 +11,25 @@ import {
 } from 'react-native';
 import CardPerson from '../../components/CardInvestigator/CardInvestigator';
 import {styles} from './MenuScreenStyle';
+import { AuthContext } from '../../context/AuthContext';
+
 interface Props extends StackScreenProps<any, any> {}
 
 export const MenuScreen = ({navigation}: Props) => {
+  const { user } = useContext(AuthContext);
+  const {nombre,apellido,foto} =user;
+
   return (
     <KeyboardAvoidingView
       style={{flex: 1}}
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
       <ScrollView>
         <View style={styles.container}>
-          <CardPerson />
+          <CardPerson
+            name={nombre}
+            lastname={apellido}
+            img={foto}
+          />
           <Text
             style={{
               ...styles.textCard,
@@ -123,6 +132,9 @@ export const MenuScreen = ({navigation}: Props) => {
                 />
               </View>
             </TouchableOpacity>
+            <Text style={{color: 'black'}}>    
+                {JSON.stringify(user.nombre,null,4)}
+            </Text>
           </View>
         </View>
       </ScrollView>

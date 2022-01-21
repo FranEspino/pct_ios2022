@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {Image, Text, View} from 'react-native';
 import {styles} from './ProfileScreenStyle';
 import Icon from 'react-native-vector-icons/Ionicons';
 import PctButtom from '../../components/PctButtom/PctButtom';
+import { AuthContext } from '../../context/AuthContext';
 export const ProfileScreen = () => {
+  const { LogOut } = useContext(AuthContext);
+
   return (
     <View
       style={{
@@ -50,7 +53,7 @@ export const ProfileScreen = () => {
       <PctButtom 
       style={{marginTop: 40}}
         title="Editar Perfil"
-        onPress={() => {}}
+        onPress={LogOut}
       />
       </View>
     </View>

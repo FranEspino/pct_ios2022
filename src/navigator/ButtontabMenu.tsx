@@ -1,30 +1,40 @@
-import React from 'react';
-import {ProfileScreen} from '../screens/ProfileScreen/ProfileScreen';
-import {AdvanceScreen} from '../screens/AdvanceScreen/AdvanceScreen';
+import React, { useContext } from 'react';
+
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {StackMenu} from './StackMenu';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { StackAdvance } from './StackAdvance';
 import { StackPerfil } from './StackPerfil';
+import { LoaderSkype } from '../components/Loader/Loader';
+import { AuthContext } from '../context/AuthContext';
 
 const Tab = createBottomTabNavigator();
 
 export const ButtontabMenu = () => {
+  const {statusLogin} = useContext(AuthContext);
+  if (statusLogin === 'cheking') {
+    return <LoaderSkype />;
+  }
+
   return (
+    
     <Tab.Navigator
       sceneContainerStyle={{backgroundColor: 'white'}}
       //Configuración global que aplica a cada Tab
       screenOptions={({route}) => ({
-        
+  
+
         headerShown: false,
         tabBarActiveTintColor: '#ffffff',
         tabBarInactiveTintColor: '#ffffff',
         tabBarShowLabel: true,
         tabBarStyle: {
           backgroundColor: '#175000',
+          height: 50
         },
         style: {
           backgroundColor: '#175000',
+          
         },
         tabBarBackgroundColor: '#175000',
         headerStyle: {
